@@ -16,12 +16,26 @@ export const counterSlice = createSlice({
       state.value -= 1;
     },
 
-    incrementbyAmount: (state, action) => {
+    incrementbyAmount: (state, action) => {     
       state.value += action.payload;
+
     },
   },
 });
 
  export const { increment, decrement, incrementbyAmount } = counterSlice.actions;
 
+ export const IncrementAsync = (amount) => (dispatch) =>{
+     
+    setTimeout( () =>{
+
+        dispatch(incrementbyAmount(amount))
+
+    }, 2000)
+ 
+
+ }
+
 export default counterSlice.reducer;
+
+
